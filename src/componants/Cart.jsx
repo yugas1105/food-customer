@@ -1,15 +1,43 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { decreQty, increQty, calculateTotal, removeItem } from './reduxwork/CartSlice'
+import { decreQty, increQty, calculateTotal, removeItem, clearCart } from './reduxwork/CartSlice'
+import axios from 'axios'
+
 
 const Cart = () => {
 
   let { cartItem, cartTotal } = useSelector((state) => state.cart)
 
+  let { userData } = useSelector((state) => state.user)
   let dispatcher = useDispatch()
   dispatcher((calculateTotal()))
 
+
+  let placeOrder = async () => {
+
+    let orderItems = cartItem.map((item) => {
+      return {
+        food: item._id,
+        quantity: item.Qty
+      }
+    })
+
+    let reqBody = {
+      customer: userData._id,
+      totalPrice: cartTotal,
+      items: orderItems
+    }
+
+    try {
+      let response = await axios.post("http://localhost:5000/api/createorder", reqBody)
+      console.log(response.data);
+      alert("Order Placed Successfully")
+      dispatcher(clearCart())
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <>
       <Box >
@@ -53,6 +81,9 @@ const Cart = () => {
           }
         </Grid>
         <Typography variant='h5'>Total:{cartTotal}</Typography>
+        <Button onClick={() => placeOrder()} variant='contained' color='success'>
+          Place Order
+        </Button>
       </Box >
     </>
   )
