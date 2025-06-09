@@ -4,9 +4,12 @@ import React from 'react'
 const Order = () => {
   return (
     <>
-        <Box>
-            <Typography variant='h5' sx={{mt:9}}>Order</Typography>
-        </Box>
+      <Box>
+        <Typography variant='h4' sx={{
+          mt: 25,
+          textAlign: 'center'
+        }}>Order</Typography>
+      </Box>
     </>
   )
 }

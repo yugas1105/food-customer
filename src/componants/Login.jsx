@@ -1,23 +1,46 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
+import axios from 'axios'
 import React from 'react'
-import { Form, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { loginUser } from './reduxwork/UserSlice'
 
 const Login = () => {
 
   let navigator = useNavigate()
+  let dispatcher = useDispatch()
+
+  let logInCustomerData = async (e) => {
+    e.preventDefault()
+    let formData = new FormData(e.target);
+    let loginData = Object.fromEntries(formData.entries());
+
+    try {
+      let result = await axios.post("http://localhost:5000/api/dologin", loginData);
+      console.log("FDATA", result.data.data);
+      dispatcher(loginUser(result.data.data))
+
+      // alert("Login Successfull")
+      navigator('/')
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
+
       <Box sx={{
-        mt: 12,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '70vh',
+        minHeight: '89vh',
         backgroundColor: '#f4f6f8',
+        mt: 8
       }}>
         <Box
           component='form'
+          onSubmit={logInCustomerData}
           sx={{
             width: 400,
             bgcolor: 'white',
@@ -37,12 +60,14 @@ const Login = () => {
             mb: 1,
           }}>
             Customer Login </Typography>
+
           <TextField
             type='email'
             name='email'
             label='Enter your email'
             variant='outlined'
-            fullWidth />
+            fullWidth
+          />
 
           <TextField
             type='password'
@@ -51,19 +76,28 @@ const Login = () => {
             variant='outlined'
             fullWidth />
 
-          <Button variant='contained' color='success' sx={{     
-            width: '100%',  
-            bgcolor: 'primary', // blue
-            py: 1.2,
-            fontWeight: 'bold',
-            letterSpacing: 1,
-            fontSize: '1rem',
-            '&:hover': {
-              bgcolor: 'darkgreen',
-            },
-            boxShadow: 2,
-          }}
-          >Login</Button>
+          <Button
+            type='submit'
+            variant='contained'
+            sx={{
+              borderRadius: '999px',
+              textTransform: 'uppercase',
+              minWidth: '120px',
+              height: '45px',
+              fontWeight: 'bold',
+              fontSize: '20px',
+              background: "#fd8d1d",
+              background: "linear-gradient(90deg, rgb(253, 104, 29) 0%, rgb(249, 227, 29) 100%)",
+              transition: 'all 0.2s ease-in-out',
+              '&:hover': {
+                translate: "0 6px",
+                boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"
+              }
+            }}
+          >
+            Login
+          </Button>
+
 
           <Typography variant='body2' onClick={() => {
             navigator('/register')
@@ -79,9 +113,8 @@ const Login = () => {
             }}
           >
             Don't have an an account? Register here</Typography>
-
         </Box>
-      </Box>
+      </Box >
     </>
   )
 }

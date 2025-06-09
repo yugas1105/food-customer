@@ -1,95 +1,137 @@
-import { AppBar, Box, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
+import { AppBar, Badge, Box, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
 import React from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
-import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ChromeReaderModeIcon from '@mui/icons-material/ChromeReaderMode';
 import PortraitIcon from '@mui/icons-material/Portrait';
-import LoginIcon from '@mui/icons-material/Login';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useSelector } from 'react-redux';
 
 const MyAppBar = () => {
 
     let navigator = useNavigate()
 
+    const { itemCount } = useSelector((state) => state.cart)
+    const { isLogin } = useSelector((state) => state.user)
+
     return (
         <>
             <Box>
-                <AppBar>
+                <AppBar position="fixed" color="warning" sx={{ background: '#0B0B45' }}>
                     <Toolbar>
                         <IconButton>
                             <MenuIcon sx={{
                                 color: '#fff',
-                                
                             }} />
                         </IconButton>
 
-                        <Typography variant='h4' sx={{mr:6, ml:3}}>FoodKart</Typography>
+                        <Typography variant='h4' sx={{ mr: 6, ml: 3, fontWeight: "bold", }}>FoodKart</Typography>
 
                         <List sx={{
                             display: "flex"
                         }}>
                             <ListItem onClick={() => {
                                 navigator("/")
-                            }}
-                                sx={{
+                            }}>
+                                <ListItemIcon sx={{ minWidth: 34, color: "#fff" }}>
+                                    <HomeIcon />
+                                </ListItemIcon>
+                                <ListItemText sx={{
                                     transition: 'all 0.3s ease-in-out',
                                     '&:hover': {
                                         px: 1
                                     },
                                     color: "#fff"
-                                }}
-                            >
-                                <ListItemIcon sx={{ minWidth: 34, color: "#fff" }}>
-                                    <HomeIcon />
-                                </ListItemIcon>
-                                <ListItemText>Home</ListItemText>
+                                }}>Home</ListItemText>
                             </ListItem>
 
                             <ListItem onClick={() => {
                                 navigator("/dishes")
                             }}>
-                                <ListItemIcon sx={{ minWidth: 34, color: "#fff" }}>
-                                    <LocalDiningIcon />
+                                <ListItemIcon sx={{ minWidth: 36, color: "#fff" }}>
+                                    <FastfoodIcon />
                                 </ListItemIcon>
-                                <ListItemText>Dishes</ListItemText>
+                                <ListItemText sx={{
+                                    transition: 'all 0.3s ease-in-out',
+                                    '&:hover': {
+                                        px: 1
+                                    },
+                                    color: "#fff"
+                                }}>Dishes</ListItemText>
                             </ListItem>
 
-                            <ListItem onClick={() => {
-                                navigator("/cart")
-                            }}>
-                                <ListItemIcon sx={{ minWidth: 34, color: "#fff" }}>
-                                    <ShoppingCartIcon />
-                                </ListItemIcon>
-                                <ListItemText>Cart</ListItemText>
-                            </ListItem>
+                            {
+                                isLogin && (
+                                    <ListItem onClick={() => {
+                                        navigator("/cart")
+                                    }}>
+                                        <ListItemIcon sx={{ minWidth: 36, color: "#fff" }}>
+                                            <ShoppingCartIcon />
+                                        </ListItemIcon>
+                                        <Badge badgeContent={itemCount} color='error'>
+                                            <ListItemText sx={{
+                                                transition: 'all 0.3s ease-in-out',
+                                                '&:hover': {
+                                                    px: 1
+                                                },
+                                                color: "#fff"
+                                            }}>Cart</ListItemText>
+                                        </Badge>
+                                    </ListItem>
+                                )
+                            }
 
                             <ListItem onClick={() => {
                                 navigator("/order")
                             }}>
-                                <ListItemIcon sx={{ minWidth: 34, color: "#fff" }}>
+                                <ListItemIcon sx={{ minWidth: 36, color: "#fff" }}>
                                     <ChromeReaderModeIcon />
                                 </ListItemIcon>
-                                <ListItemText>Order</ListItemText>
+                                <ListItemText sx={{
+                                    transition: 'all 0.3s ease-in-out',
+                                    '&:hover': {
+                                        px: 1
+                                    },
+                                    color: "#fff"
+                                }}>Order</ListItemText>
                             </ListItem>
 
-                            <ListItem onClick={() => {
-                                navigator("/profile")
-                            }}>
-                                <ListItemIcon sx={{ minWidth: 34, color: "#fff" }}>
-                                    <PortraitIcon />
-                                </ListItemIcon>
-                                <ListItemText>Profile</ListItemText>
-                            </ListItem>
+                            {
+                                isLogin && (
+                                    <ListItem onClick={() => {
+                                        navigator("/profile")
+                                    }}>
+                                        <ListItemIcon sx={{ minWidth: 37, color: "#fff" }}>
+                                            <PortraitIcon />
+                                        </ListItemIcon>
+                                        <ListItemText sx={{
+                                            transition: 'all 0.3s ease-in-out',
+                                            '&:hover': {
+                                                px: 1
+                                            },
+                                            color: "#fff"
+                                        }}>Profile</ListItemText>
+                                    </ListItem>
+                                )
+                            }
+
 
                             <ListItem onClick={() => {
                                 navigator("/login")
                             }}>
                                 <ListItemIcon sx={{ minWidth: 34, color: "#fff" }}>
-                                    <LoginIcon />
+                                    <AccountCircleIcon />
                                 </ListItemIcon>
-                                <ListItemText>Login</ListItemText>
+                                <ListItemText sx={{
+                                    transition: 'all 0.3s ease-in-out',
+                                    '&:hover': {
+                                        px: 1
+                                    },
+                                    color: "#fff"
+                                }}>Login</ListItemText>
                             </ListItem>
 
                         </List>

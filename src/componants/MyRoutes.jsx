@@ -7,19 +7,28 @@ import Order from './Order'
 import Profile from './Profile'
 import Login from './Login'
 import Register from './Register'
+import ProtectedRoute from './ProtectedRoute'
 
 const MyRoutes = () => {
   return (
     <>
-        <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/dishes' element={<Dishes/>}/>
-            <Route path='/cart' element={<Cart/>}/>
-            <Route path='/order' element={<Order/>}/>
-            <Route path='/profile' element={<Profile/>}/>
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/register' element={<Register/>}/>
-        </Routes>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/dishes' element={<Dishes />} />
+        <Route path='/cart' element={
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        } />
+        <Route path='/order' element={<Order />} />
+        <Route path='/profile' element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        } />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
     </>
   )
 }
