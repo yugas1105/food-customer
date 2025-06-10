@@ -1,8 +1,11 @@
 import { Box, Button, Grid, Typography } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Order = () => {
+
+  const navigate = useNavigate()
 
   const [allOrdersData, setallOrdersData] = useState([])
 
@@ -42,7 +45,8 @@ const Order = () => {
                 }}>
                   <Typography variant='body1'>Total Price: {order.totalPrice}</Typography>
                   <Typography variant='body1'>Statu: {order.status}</Typography>
-                  <Button variant='outlined' color='primary'>
+                  <Typography variant='body1'>Name: {order.customer?.name}</Typography>
+                  <Button onClick={() => navigate("/orderdetails", { state: order })} variant='outlined' color='primary'>
                     View Details
                   </Button>
                 </Box>

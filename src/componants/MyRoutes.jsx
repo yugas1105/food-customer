@@ -8,6 +8,7 @@ import Profile from './Profile'
 import Login from './Login'
 import Register from './Register'
 import ProtectedRoute from './ProtectedRoute'
+import OrderDetails from './OrderDetails'
 
 const MyRoutes = () => {
   return (
@@ -28,6 +29,7 @@ const MyRoutes = () => {
         } />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/orderdetails' element={<OrderDetails />} />
       </Routes>
     </>
   )
