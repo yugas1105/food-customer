@@ -38,15 +38,11 @@ let cartSlice = createSlice({
         removeItem: (state, actions) => {
             state.cartItem = state.cartItem.filter((item) => item._id !== actions.payload.dId);
             state.itemCount = state.cartItem.length
-        },
-        clearCart: (state) => {
-            state.cartItem = [],
-            state.cartTotal = 0,
-            state.itemCount = 0
         }
+        
     }
 })
 
 
-export const { addItem, increQty, decreQty, calculateTotal, removeItem, clearCart } = cartSlice.actions
+export const { addItem,clearCart, increQty, decreQty, calculateTotal, removeItem, clearCart } = cartSlice.actions
 export default cartSlice.reducer
