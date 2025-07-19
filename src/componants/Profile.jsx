@@ -1,98 +1,84 @@
-import { Box, Button, Typography } from '@mui/material'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { logoutUser } from './reduxwork/UserSlice'
+import { Box, Button, Typography, Paper } from '@mui/material';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logoutUser } from './reduxwork/UserSlice';
 
 const Profile = () => {
+  const { userData } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  let { userData } = useSelector((state) => state.user)
-
-  let dispatcher = useDispatch()
-  let navigater = useNavigate()
   return (
-    <>
-      <Box sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        mt: 13
-      }}>
-        <Typography variant='h4' sx={{
-          textAlign: 'center',
-          color: 'warning.dark',
-          fontFamily: 'Poppins, sans-serif',
-          fontWeight: 700,
-          letterSpacing: 1,
-          mb: 4
-        }}>Profile</Typography>
-
-        <Box>
-          <Typography variant='h6' sx={{
-            color: 'warning.dark',
+    <Box sx={{ mt: 10, display: 'flex', justifyContent: 'center' }}>
+      <Paper elevation={3} sx={{ p: 3, width: 500, borderRadius: 3 }}>
+        <Typography
+          variant="h4"
+          sx={{
+            textAlign: 'center',
+            color: 'primary.main',
+            fontWeight: 700,
             fontFamily: 'Poppins, sans-serif',
-            fontWeight: 500,
-            mb: 2
+            mb: 3,
           }}
-          >Name: {userData.name}</Typography>
+        >
+          Profile
+        </Typography>
 
-          <Typography variant='h6' sx={{
-            color: 'warning.dark',
-            fontFamily: 'Poppins, sans-serif',
-            fontWeight: 500,
-            mb: 2
-          }}>Email: {userData.email}</Typography>
+        <Box sx={{ml:3}}>
+          <Typography variant="caption" color="text.secondary">
+            Name 
+          </Typography>
+          <Typography variant="body1" color="text.primary" sx={{ mb: 2 }}>
+            {userData.name}
+          </Typography>
 
-          <Typography variant='h6' sx={{
-            color: 'warning.dark',
-            fontFamily: 'Poppins, sans-serif',
-            fontWeight: 500,
-            mb: 2
-          }}
-          >Address: {userData.address?.street} {userData.address?.city} {userData.address?.postalCode}</Typography>
+          <Typography variant="caption" color="text.secondary">
+            Email
+          </Typography>
+          <Typography variant="body1" color="text.primary" sx={{ mb: 2 }}>
+            {userData.email}
+          </Typography>
 
-          <Typography variant='h6' sx={{
-            color: 'warning.dark',
-            fontFamily: 'Poppins, sans-serif',
-            fontWeight: 500,
-            mb: 2
-          }}          
-          >Mobile No: {userData.Phone}</Typography>
+          <Typography variant="caption" color="text.secondary">
+            Address
+          </Typography>
+          <Typography variant="body1" color="text.primary" sx={{ mb: 2 }}>
+            {userData.address?.street}, {userData.address?.city} - {userData.address?.postalCode}
+          </Typography>
 
-
+          <Typography variant="caption" color="text.secondary">
+            Mobile No
+          </Typography>
+          <Typography variant="body1" color="text.primary" sx={{ mb: 2 }}>
+            {userData.Phone}
+          </Typography>
         </Box>
 
-        <Button variant='contained' color='error'
-          sx={{
-            mt: 4,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '10px 26px',
-            background: '#ff3e3e',
-            color: '#fff',
-            fontFamily: 'Poppins, sans-serif',
-            fontSize: '18px',
-            fontWeight: 'bold',
-            borderRadius: '50px',
-            cursor: 'pointer',
-            overflow: 'hidden',
-            transition: 'all 0.3s ease-in-out',
-            boxShadow: '0 10px 20px rgba(255, 62, 62, 0.5)',
-            '&:hover': {
-              background: '#ff1e1e',
-              transform: 'scale(1.08)'
-            }
-          }}
-          onClick={() => {
-            dispatcher(logoutUser())
-            navigater('/login')
-          }}>
-          Logout
-        </Button>
-      </Box >
-    </>
-  )
-}
+        <Box textAlign="center">
+          <Button
+            variant="contained"
+            color="error"
+            sx={{
+              mt: 3,
+              fontFamily: 'Poppins, sans-serif',
+              px: 4,
+              py: 1,
+              fontWeight: 600,
+              fontSize: '15px',
+              textTransform: 'capitalize'
+            }}
+            onClick={() => {
+              dispatch(logoutUser());
+              navigate('/login');
+            }}
+          >
+            Logout
+          </Button>
+        </Box>
+      </Paper>
+    </Box>
+  );
+};
 
-export default Profile
+export default Profile;

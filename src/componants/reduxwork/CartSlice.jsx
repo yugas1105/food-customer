@@ -28,7 +28,7 @@ let cartSlice = createSlice({
                 state.itemCount = state.cartItem.length
             }
         },
-        calculateTotal: (state, actions) => {
+        calculateTotal: (state) => {
             let total = 0
             for (const item of state.cartItem) {
                 total += item.price * item.Qty
@@ -38,10 +38,15 @@ let cartSlice = createSlice({
         removeItem: (state, actions) => {
             state.cartItem = state.cartItem.filter((item) => item._id !== actions.payload.dId);
             state.itemCount = state.cartItem.length
+        },
+        clearCart: (state) => {
+            state.cartItem = [],
+            state.cartTotal = 0,
+            state.itemCount = 0
         }
     }
 })
 
 
-export const { addItem, increQty, decreQty, calculateTotal, removeItem } = cartSlice.actions
+export const { addItem, increQty, decreQty, calculateTotal, removeItem, clearCart } = cartSlice.actions
 export default cartSlice.reducer

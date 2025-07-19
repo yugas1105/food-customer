@@ -3,7 +3,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import XIcon from '@mui/icons-material/X';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
@@ -35,42 +35,55 @@ const Footer = () => {
                             p: 0.6,
                             borderRadius: 50,
                             color: "black"
-                        }} />
+                        }}
+                            onClick={() => window.open("https://www.google.com")}
+                        />
                         <WhatsAppIcon sx={{
                             fontSize: 20,
                             backgroundColor: '#ccc',
                             p: 0.6,
                             borderRadius: 50,
                             color: "black"
-                        }} />
+                        }}
+                            onClick={() => window.open("https://web.whatsapp.com/")}
+                        />
                         <InstagramIcon sx={{
                             fontSize: 20,
                             backgroundColor: '#ccc',
                             p: 0.6,
                             borderRadius: 50,
                             color: "black"
-                        }} />
+                        }}
+                            onClick={() => window.open("https://www.instagram.com/")}
+                        
+                        />
                         <FacebookIcon sx={{
                             fontSize: 20,
                             backgroundColor: '#ccc',
                             p: 0.6,
                             borderRadius: 50,
                             color: "black"
-                        }} />
-                        <TwitterIcon sx={{
+                        }}
+                            onClick={() => window.open("https://www.facebook.com/")}
+                        
+                        />
+                        <XIcon sx={{
                             fontSize: 20,
                             backgroundColor: '#ccc',
-                            p: 0.6,
+                            p: 0.5,
                             borderRadius: 50,
                             color: "black"
-                        }} />
+                        }}
+                            onClick={() => window.open("https://www.x.com/")}
+                        
+                        />
                     </Box>
 
                     <List sx={{
                         display: "flex",
                         color: "#ccc",
-                        gap:4,
-                        height:20
+                        gap: 4,
+                        height: 20
                     }}>
                         <ListItem
                             onClick={() => navigator("/")}
@@ -140,8 +153,8 @@ const Footer = () => {
                             />
                         </ListItem>
 
-                        <ListItem 
-                        onClick={() => {navigator("/profile")}}
+                        <ListItem
+                            onClick={() => { navigator("/profile") }}
                             sx={{
                                 p: 0.5,
                                 minHeight: 24,
@@ -156,7 +169,7 @@ const Footer = () => {
                             />
                         </ListItem>
 
-                        <ListItem onClick={() => {navigator("/login")}}
+                        <ListItem onClick={() => { navigator("/login") }}
                             sx={{
                                 p: 0.5,
                                 minHeight: 24,
@@ -172,7 +185,7 @@ const Footer = () => {
                         </ListItem>
                     </List>
 
-                    <Divider sx={{ bgcolor: '#ccc' ,mt:1}} />
+                    <Divider sx={{ bgcolor: '#ccc', mt: 1 }} />
 
                     <Typography variant="caption" sx={{
                         color: '#ccc',

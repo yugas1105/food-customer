@@ -8,6 +8,7 @@ import Profile from './Profile'
 import Login from './Login'
 import Register from './Register'
 import ProtectedRoute from './ProtectedRoute'
+import OrderDetails from './OrderDetails'
 
 const MyRoutes = () => {
   return (
@@ -20,7 +21,11 @@ const MyRoutes = () => {
             <Cart />
           </ProtectedRoute>
         } />
-        <Route path='/order' element={<Order />} />
+        <Route path='/order' element={
+          <ProtectedRoute>
+            <Order />
+          </ProtectedRoute>
+        } />
         <Route path='/profile' element={
           <ProtectedRoute>
             <Profile />
@@ -28,6 +33,7 @@ const MyRoutes = () => {
         } />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/orderdetails' element={<OrderDetails />} />
       </Routes>
     </>
   )
