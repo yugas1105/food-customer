@@ -22,7 +22,7 @@ const Register = () => {
           postalCode: reqFormData["postalCode"],
         },
       });
-      showAlert("Customer Registered Successfully","success");
+      showAlert("Customer Registered Successfully", "success");
       navigate("/login");
     } catch (error) {
       console.log(error);
@@ -59,13 +59,10 @@ const Register = () => {
           variant="h4"
           align="center"
           sx={{
-            fontWeight: 700,
-            fontSize: "2rem",
-            background: "linear-gradient(90deg, #FF9800, #FFC107)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            textShadow: "1px 1px 2px rgba(0,0,0,0.1)",
+            fontWeight: "bold",
+            color: "#424242",
             mb: 1,
+            textAlign: "center",
           }}
         >
           Create Account
@@ -142,17 +139,15 @@ const Register = () => {
             variant="contained"
             color="warning"
             sx={{
-              borderRadius: "999px",
-              textTransform: "uppercase",
-              width: "200px",
-              height: "45px",
-              fontWeight: "bold",
-              fontSize: "20px",
-              background:
-                "linear-gradient(90deg, rgb(253, 104, 29) 0%, rgb(249, 227, 29) 100%)",
-              transition: "all 0.2s ease-in-out",
+              height: "35px",
+              width: "150px",
+              fontSize: "13px",
+              background: "linear-gradient(to right, #1CB5E0, #000851)",
+              color: "#fff",
+              textTransform: "capitalize",
               "&:hover": {
-                boxShadow: "rgba(32, 31, 31, 0.35) 0px 5px 15px",
+                background: "linear-gradient(to right, #1a91da, #000544)",
+                boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
               },
             }}
           >

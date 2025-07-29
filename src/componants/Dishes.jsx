@@ -67,6 +67,8 @@ const Dishes = () => {
     fetchDishes();
   }, []);
 
+  
+
   let submitReviewData = async (e) => {
     e.preventDefault();
     let reviewData = new FormData(e.target);
@@ -107,8 +109,7 @@ const Dishes = () => {
   };
 
   const chipStyle = (category) => ({
-    backgroundColor:
-      selectedCategory === category ? "#1CB5E0" : "transparent",
+    backgroundColor: selectedCategory === category ? "#1CB5E0" : "transparent",
     color: selectedCategory === category ? "#fff" : "inherit",
     borderColor: "#1CB5E0",
     fontSize: "13px",
@@ -120,7 +121,7 @@ const Dishes = () => {
 
   return (
     <>
-      <Box sx={{ mt: 11 }}>
+      <Box sx={{ mt: 10 }}>
         <Stack sx={{ justifyContent: "center" }} direction="row" spacing={2}>
           <Chip
             label="All"
@@ -154,7 +155,7 @@ const Dishes = () => {
           />
         </Stack>
 
-        <Grid container sx={{ margin: "14px 20px 15px 20px" }}>
+        <Grid container sx={{ margin: "17px 20px 0px 20px" }}>
           {filterDishes.map((dish) => {
             return (
               <Grid
@@ -166,7 +167,7 @@ const Dishes = () => {
                 }}
               >
                 <Box sx={{ padding: "3px" }}>
-                  <Card sx={{ height: "450px", position: "relative" }}>
+                  <Card sx={{ height: "450px", position: "relative", mb: 8 }}>
                     <CardMedia
                       component="img"
                       image={`http://localhost:5000/${dish.image}`}

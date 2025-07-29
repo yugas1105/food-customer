@@ -1,48 +1,65 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 let initialState = {
-    cartItem: [],
-    cartTotal: 0,
-    itemCount: 0
-}
+  cartItem: [],
+  cartTotal: 0,
+  itemCount: 0,
+};
 
 let cartSlice = createSlice({
-    name: "cart",
-    initialState,
-    reducers: {
-        addItem: (state, actions) => {
-            let newItem = { ...actions.payload, Qty: 1 }
-            state.cartItem = [...state.cartItem, newItem]
-            state.itemCount = state.cartItem.length
-        },
-        increQty: (state, actions) => {
-            let dishItem = state.cartItem.find((itm) => itm._id == actions.payload.dId);
-            dishItem.Qty += 1
-        },
-        decreQty: (state, actions) => {
-            let dishItem = state.cartItem.find((itm) => itm._id == actions.payload.dId);
-            dishItem.Qty -= 1
+  name: "cart",
+  initialState,
+  reducers: {
+    addItem: (state, actions) => {
+      let newItem = { ...actions.payload, Qty: 1 };
+      state.cartItem = [...state.cartItem, newItem];
+      state.itemCount = state.cartItem.length;
+    },
+    increQty: (state, actions) => {
+      let dishItem = state.cartItem.find(
+        (itm) => itm._id == actions.payload.dId
+      );
+      dishItem.Qty += 1;
+    },
+    decreQty: (state, actions) => {
+      let dishItem = state.cartItem.find(
+        (itm) => itm._id == actions.payload.dId
+      );
+      dishItem.Qty -= 1;
 
-            if(dishItem.Qty == 0){
-                state.cartItem = state.cartItem.filter((item) => item._id != actions.payload.dId)
-                state.itemCount = state.cartItem.length
-            }
-        },
-        calculateTotal: (state) => {
-            let total = 0
-            for (const item of state.cartItem) {
-                total += item.price * item.Qty
-            }
-            state.cartTotal = total
-        },
-        removeItem: (state, actions) => {
-            state.cartItem = state.cartItem.filter((item) => item._id !== actions.payload.dId);
-            state.itemCount = state.cartItem.length
-        }
-        
-    }
-})
+      if (dishItem.Qty == 0) {
+        state.cartItem = state.cartItem.filter(
+          (item) => item._id != actions.payload.dId
+        );
+        state.itemCount = state.cartItem.length;
+      }
+    },
+    calculateTotal: (state) => {
+      let total = 0;
+      for (const item of state.cartItem) {
+        total += item.price * item.Qty;
+      }
+      state.cartTotal = total;
+    },
+    removeItem: (state, actions) => {
+      state.cartItem = state.cartItem.filter(
+        (item) => item._id !== actions.payload.dId
+      );
+      state.itemCount = state.cartItem.length;
+    },
+    clearCart: (state) => {
+      (state.cartItem = []), (state.cartTotal = 0), (state.itemCount = 0);
+    },
+  },
+});
 
-
-export const { addItem,clearCart, increQty, decreQty, calculateTotal, removeItem, clearCart } = cartSlice.actions
-export default cartSlice.reducer
+export const {
+  addItem,
+  clearCart,
+  increQty,
+  decreQty,
+  calculateTotal,
+  removeItem
+  
+} = cartSlice.actions;
+export default cartSlice.reducer;
