@@ -31,7 +31,6 @@ const Login = () => {
 
   return (
     <>
-    
       <Box
         sx={{
           overflow: "hidden",
@@ -55,10 +54,10 @@ const Login = () => {
             sx={{
               display: "flex",
               flexDirection: "column",
-              gap: 4,
-              p: 3,
+              gap: 3,
+              p: 4,
               height: "100%",
-              width: 380,
+              width: 400,
             }}
           >
             <Typography
@@ -101,8 +100,8 @@ const Login = () => {
                 sx={{
                   height: "35px",
                   fontSize: "17px",
-                  height:35,
-                  width:100,
+                  height: 35,
+                  width: 100,
                   background: "linear-gradient(to right, #1CB5E0, #000851)",
                   color: "#fff",
                   textTransform: "capitalize",
@@ -135,7 +134,6 @@ const Login = () => {
           </Box>
         </Card>
       </Box>
-      
     </>
   );
 };

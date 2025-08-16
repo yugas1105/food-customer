@@ -16,7 +16,7 @@ const Profile = () => {
           variant="h4"
           sx={{
             textAlign: 'center',
-            color: 'primary.main',
+            color: 'primary',
             fontWeight: 700,
             fontFamily: 'Poppins, sans-serif',
             mb: 3,

@@ -121,7 +121,7 @@ const Dishes = () => {
 
   return (
     <>
-      <Box sx={{ mt: 10 }}>
+      <Box sx={{ mt: 11 }}>
         <Stack sx={{ justifyContent: "center" }} direction="row" spacing={2}>
           <Chip
             label="All"

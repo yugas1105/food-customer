@@ -131,62 +131,60 @@ const Home = () => {
       >
         {/* Carousel */}
         <AutoPlaySwipeableViews
-  index={activeStep}
-  onChangeIndex={(step) => setActiveStep(step)}
-  interval={3000}
-  enableMouseEvents
-  axis="x"
-  onTransitionEnd={() => {
-    if (activeStep === maxSteps - 1) {
-      setTimeout(() => {
-        setActiveStep(0); // reset to start after last image
-      }, 500); // wait for the animation to finish
-    }
-  }}
-  style={{ overflow: "hidden" }}
->
-  {images.map((step, index) => (
-    <Box key={index} sx={{ position: "relative" }}>
-      <Box
-        component="img"
-        src={step.imgPath}
-        alt={step.label}
-        sx={{
-          height: 560,
-          width: "100%",
-          objectFit: "cover",
-          display: "block",
-        }}
-      />
-      <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.4)",
-          color: "#fff",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          px: 2,
-        }}
-      >
-        <Typography variant="h3" sx={{ fontWeight: "bold" }}>
-          {step.title}
-        </Typography>
-        <Typography variant="subtitle1" sx={{ mt: 1 }}>
-          {step.caption}
-        </Typography>
-      </Box>
-    </Box>
-  ))}
-</AutoPlaySwipeableViews>
-
-
+          index={activeStep}
+          onChangeIndex={(step) => setActiveStep(step)}
+          interval={3000}
+          enableMouseEvents
+          axis="x"
+          onTransitionEnd={() => {
+            if (activeStep === maxSteps - 1) {
+              setTimeout(() => {
+                setActiveStep(0); // reset to start after last image
+              }, 500); // wait for the animation to finish
+            }
+          }}
+          style={{ overflow: "hidden" }}
+        >
+          {images.map((step, index) => (
+            <Box key={index} sx={{ position: "relative" }}>
+              <Box
+                component="img"
+                src={step.imgPath}
+                alt={step.label}
+                sx={{
+                  height: 560,
+                  width: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  backgroundColor: "rgba(0, 0, 0, 0.4)",
+                  color: "#fff",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  textAlign: "center",
+                  px: 2,
+                }}
+              >
+                <Typography variant="h3" sx={{ fontWeight: "bold" }}>
+                  {step.title}
+                </Typography>
+                <Typography variant="subtitle1" sx={{ mt: 1 }}>
+                  {step.caption}
+                </Typography>
+              </Box>
+            </Box>
+          ))}
+        </AutoPlaySwipeableViews>
       </Box>
 
       <IconButton

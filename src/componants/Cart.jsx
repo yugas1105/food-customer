@@ -133,7 +133,7 @@ const Cart = () => {
                 <Box padding={1}>
                   <Card
                     sx={{
-                      height: 250,
+                      height: 280,
                       position: "relative",
                       padding: 1,
                     }}

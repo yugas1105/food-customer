@@ -19,7 +19,7 @@ import ChromeReaderModeIcon from "@mui/icons-material/ChromeReaderMode";
 import PortraitIcon from "@mui/icons-material/Portrait";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import AnimationIcon from '@mui/icons-material/Animation';
+import AnimationIcon from "@mui/icons-material/Animation";
 import { useSelector } from "react-redux";
 
 const MyAppBar = () => {
@@ -33,19 +33,13 @@ const MyAppBar = () => {
       <AppBar position="fixed" color="warning" sx={{ background: "#0B0B45" }}>
         <Toolbar>
           <IconButton>
-            <AnimationIcon
-              sx={{
-                fontSize: 32,
-                color:"#fff"
-                // color: "linear-gradient( 98.7deg,  rgba(34,175,245,1) 2.8%, rgba(98,247,151,1) 97.8% )"
-              }}
-            />
+            
+              <AnimationIcon style={{ fontSize: "inherit", color: "#fff" }} />
           </IconButton>
-
+          
           <Typography variant="h5" sx={{ mr: 6, ml: 1, fontWeight: "bold" }}>
             FoodKart
           </Typography>
-
           <List
             sx={{
               display: "flex",
@@ -159,7 +153,6 @@ const MyAppBar = () => {
               </ListItem>
             )}
           </List>
-
           <Box
             sx={{
               position: "absolute",
@@ -183,7 +176,6 @@ const MyAppBar = () => {
                   "&:hover": {
                     color: "#fff",
                     textDecoration: "underline",
-
                   },
                 }}
               >
