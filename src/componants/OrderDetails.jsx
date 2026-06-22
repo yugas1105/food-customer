@@ -9,7 +9,6 @@ import {
   Typography,
   Paper,
 } from "@mui/material";
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAlert } from "../custom/CustomAlert";
 import { PDFDownloadLink } from "@react-pdf/renderer";
