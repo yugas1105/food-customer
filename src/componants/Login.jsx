@@ -100,7 +100,7 @@ const Login = () => {
                 sx={{
                   height: "35px",
                   fontSize: "17px",
-                  height: 35,
+                  // height: 35,
                   width: 100,
                   background: "linear-gradient(to right, #1CB5E0, #000851)",
                   color: "#fff",
